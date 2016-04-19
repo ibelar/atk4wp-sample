@@ -1,0 +1,10 @@
+{
+  "name": "Atk4 Wp plugin",
+  "description": "Testing atk4 with Wordpress in a plugin.",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "atk4wp\\": "lib/"
+    }
+  }
+}

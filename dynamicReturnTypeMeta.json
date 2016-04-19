@@ -1,0 +1,24 @@
+{
+  "methodCalls": [
+    {
+      "class": "\\AbstractObject",
+      "method": "add",
+      "position": 0
+    },
+    {
+      "class": "\\AbstractObject",
+      "method": "addField",
+      "position": 0
+    }
+  ],
+  "functionCalls": [
+    {
+      "function": "\\add",
+      "position": 0
+    },
+    {
+      "function": "\\addField",
+      "position": 0
+    }
+  ]
+}
