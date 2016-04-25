@@ -2,7 +2,7 @@
 /**
  * @wordpress-plugin
  * Plugin Name:       Atk4-wp interface sample
- * Plugin URI:        http://www.mysite.com/
+ * Plugin URI:        https://github.com/ibelar/atk4wp-sample
  * Description:       Agile Toolkit integration inside WordPress. Demonstrate the use of Agile Toolkit within a WordPress plugin. This plugin create an event table within your WordPress database, add an admin menu called Event and submenu, two meta boxes within your post type, a widget for displaying last event and two samples shortcode; one displaying a user form and the other showing atk4 ajax reloading.
  * Version:           1.0.0
  * Author:            Alain Belair
