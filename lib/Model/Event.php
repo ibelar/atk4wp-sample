@@ -18,7 +18,7 @@
 namespace atk4wp\Model;
 
 
-class Event extends \Model_Table
+class Event extends \SQL_Model
 {
 	public function init()
 	{
