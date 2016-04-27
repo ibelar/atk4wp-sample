@@ -38,19 +38,19 @@ class Plugin extends \WpAtk implements \Pluggable
 		$this->dbTables['event']  = "{$wpdb->prefix}atkwp_event";
 	}
 
-	public function getDbTableName ( $table )
+	public function getDbTableName($table)
 	{
-		return $this->dbTables[ $table ];
+		return $this->dbTables[$table];
 	}
 
 	protected function install()
 	{
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-		dbDelta( $this->getDbSchema() );
+		dbDelta($this->getDbSchema());
 	}
 
-	private function getDbSchema() {
-
+	private function getDbSchema()
+	{
 		$eventTable = $this->dbTables['event'];
 
 		$sql = "\nCREATE TABLE `{$eventTable}` (
@@ -64,7 +64,6 @@ class Plugin extends \WpAtk implements \Pluggable
 				DEFAULT CHARACTER SET = utf8;";
 
 		return $sql;
-
 	}
 
 }

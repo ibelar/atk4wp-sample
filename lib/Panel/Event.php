@@ -17,8 +17,6 @@ class Event extends \Wp_WpPanel
 	public function init()
 	{
 		parent::init();
-
 		$this->add('atk4wp\View\CRUD', 'scr');
-
 	}
 }

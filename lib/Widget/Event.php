@@ -24,7 +24,7 @@ class Event extends \Wp_WpWidget
 		parent::init();
 		//inject the atk view
 		$this->addWidgetDisplay('View', 'event-display');
-		$this->onDisplay( [$this, 'beforeDisplayWidget']);
+		$this->onDisplay([$this, 'beforeDisplayWidget']);
 	}
 
 
@@ -33,13 +33,13 @@ class Event extends \Wp_WpWidget
 	 * @param $atkView
 	 * @param $instance
 	 */
-	public function beforeDisplayWidget( $atkView, $instance  )
+	public function beforeDisplayWidget($atkView, $instance)
 	{
-		if ( isset($instance['title']) && !empty ( $instance['title'])){
-			$this->setWidgetDisplayTitle( $instance['title']);
+		if (isset($instance['title']) && !empty($instance['title'])) {
+			$this->setWidgetDisplayTitle($instance['title']);
 		}
 		$events = $atkView->add('atk4wp\Model\Event')->setLimit($instance['count'])->setOrder('id', 'desc');
-		foreach( $events as $key => $event ){
+		foreach ($events as $key => $event) {
 			$atkView->add('P')->set($event->get('name'));
 		}
 	}

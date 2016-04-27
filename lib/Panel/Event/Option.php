@@ -34,7 +34,7 @@ class Option extends \Wp_WpPanel
 		//Event default tab
 		$v = $eventDefault->add('View')->addClass('atk-box');
 		$f = $v->add('Form_WpStacked');
-		$default = $f->addField('dropdown', 'event_default')->setValueList(['weekly' => _('Weekly'), 'monthly' => _('Monthly'), 'annually' => _('Annually') ]);
+		$default = $f->addField('dropdown', 'event_default')->setValueList(['weekly' => _('Weekly'), 'monthly' => _('Monthly'), 'annually' => _('Annually')]);
 		if (isset($options)) {
 			$default->set($options['event-default']);
 		}
@@ -48,7 +48,7 @@ class Option extends \Wp_WpPanel
 		//Image upload tab
 		$fu = $upload->add('Form_WpStacked')->addClass('atk-padding-small');
 		$uploadField = $fu->addField('Form_Field_WpUpload', 'file')->setCaption('');
-		$uploadField->addProgressBar('#dd9933')->setAcceptType( ['image/*'] )->addStyleClass( 'style-input' );
+		$uploadField->addProgressBar('#dd9933')->setAcceptType(['image/*'])->addStyleClass('style-input');
 		$uploadField->validateField([$this, 'validateFile']);
 		$uploadField->setInputMessage( _('Upload image file to Media'));
 
@@ -57,17 +57,17 @@ class Option extends \Wp_WpPanel
 
 	}
 
-	public function fileSubmit( $f )
+	public function fileSubmit($f)
 	{
 		//call Wordpress media uploader.
-		/*$id = media_handle_upload( 0, 0 );
+		$id = media_handle_upload( 0, 0 );
 		if( is_wp_error( $id )){
 			throw $this->exception( $id->get_error_message());
-		}*/
+		}
 		$this->js()->univ()->successMessage(_('File updload successfully'))->execute();
 	}
 
-	public function validateFile( $field )
+	public function validateFile($field)
 	{
 		//Check if $_FILES is set and contains proper file type.
 	}
