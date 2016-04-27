@@ -19,7 +19,7 @@ class PostInfo extends \Wp_WpMetaBox
 		$event = $this->add('atk4wp\Model\Event')->tryLoadAny()->get('name');
 
 		$v = $this->add('View');
-		$v->add('P')->set( isset($event) ? $event : 'There is no event yet to display!' );
+		$v->add('P')->set(isset($event) ? $event : 'There is no event yet to display!');
 
 	}
 }

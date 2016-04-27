@@ -21,11 +21,11 @@ class ClickMe extends \Wp_WpShortcode
 	public function init()
 	{
 		parent::init();
-		if( isset ($this->args[ 'max_count' ]) ){
-			$this->memorize( 'max', $this->args[ 'max_count' ]);
-		} else if( ! $this->recall('max', null) ){
+		if (isset ($this->args['max_count'])) {
+			$this->memorize('max', $this->args['max_count']);
+		} else if (!$this->recall('max', null)) {
 			//add a default max count
-			$this->memorize( 'max', 2);
+			$this->memorize('max', 2);
 		}
 		$max = $this->recall('max');
 
@@ -34,11 +34,11 @@ class ClickMe extends \Wp_WpShortcode
 		$b = $v->add('Button')->addClass('atk-push');
 		$num =  $_GET['number'];
 
-		if ($num < $max){
-			$label = sprintf( 'Click %d/%d', $num, $max );
-			$b->js('click', $b->js()->reload([ 'number' => $num + 1 ]));
+		if ($num < $max) {
+			$label = sprintf('Click %d/%d', $num, $max);
+			$b->js('click', $b->js()->reload(['number' => $num + 1 ]));
 		} else {
-			$label =  sprintf( 'Stop %d/%d', $max, $max );
+			$label =  sprintf('Stop %d/%d', $max, $max);
 			$b->js('click', $b->js()->univ()->atkWpMessage($this->name, 'danger', 'Didn\'t I tell you to stop!'));
 		}
 		$b->setLabel($label);

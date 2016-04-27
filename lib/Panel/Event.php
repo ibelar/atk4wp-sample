@@ -18,12 +18,7 @@ class Event extends \Wp_WpPanel
 	{
 		parent::init();
 
-		$m =  $this->add('atk4wp\Model\Event');
-		$crud = $this->add('CRUD', ['name' => 'scr',
-		                                 'form_class' => 'Form_WpStacked',
-		                                 'frame_options' => [ 'width' => '500px']
-		]);
+		$this->add('atk4wp\View\CRUD', 'scr');
 
-		$crud->setModel($m);
 	}
 }

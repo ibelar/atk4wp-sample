@@ -22,26 +22,27 @@ class Event extends \Model_Table
 {
 	public function init()
 	{
-		$this->table = $this->app->getDbTableName ('event');
+		$this->table = $this->app->getDbTableName('event');
 		parent::init();
 
 		//load WordPress option for our plugin
 		$options = get_option('atk4wp-event-options', null);
 
-		$this->addField('name')->caption(_('Name'))->mandatory(_('You must have an event name'));
+		$this->addField('name')->caption(_('Name'))->mandatory(true);
 
 		$this->addField('description')->caption(_('Description'));
 
 		$cat = $this->addField('category')
-		     ->setValueList( ['weekly' => _('Weekly'), 'monthly' => _('Monthly'), 'annually' => _('Annually') ])
+		     ->setValueList(['weekly' => _('Weekly'), 'monthly' => _('Monthly'), 'annually' => _('Annually')])
 		     ->display(array('grid'=>'text'))
 			 ->caption('Type');
-		if( isset($options)){
-			$cat->defaultValue( $options['event-default']);
+		if (isset($options)) {
+			$cat->defaultValue($options['event-default']);
 		}
 
 		$this->addField('date')
 		     ->type('date')
-		     ->caption(_('Date'));
+		     ->caption(_('Date'))
+			 ->mandatory(true);
 	}
 }

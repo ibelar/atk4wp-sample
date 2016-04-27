@@ -22,14 +22,14 @@ class Form extends \Wp_WpShortcode
 		parent::init();
 		$v = $this->add('View')->addClass('atk-box atk-push');
 		$f = $v->add('Form_WpStacked', 'f');
-		$f->addMandatoryField('line', 'first');
-		$f->addMandatoryField('line', 'last');
-		$f->addField('datepicker', 'date');
+		$f->addField('line', 'first')->validateField([$f, 'validateMandatory']);
+		$f->addField('line', 'last')->validateField([$f, 'validateMandatory']);
+
+		$f->addField('datepicker', 'date')->validateField([$f, 'validateMandatory']);
 
 		$f->addSubmit('Save');
 
 		if($f->isSubmitted()){
-			$f->exitOnError();
 			$js[] = $this->js()->univ()->atkWpMessage($this->name, 'success', 'Your data is safe with us!');
 			$this->js(null, $js)->execute();
 		}

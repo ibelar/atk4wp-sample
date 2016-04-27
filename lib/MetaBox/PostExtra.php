@@ -25,10 +25,10 @@ class PostExtra extends \Wp_WpMetaBox
 
 		$this->add('H5')->set('Add extra informaton to this post');
 
-		$f =  $this->addForm();
+		$f = $this->addForm();
 		$f->addField('line', 'first');
 		$f->addField('line', 'last');
-		$f->addField('dropdown', 'gender')->setCaption('Genre')->setValuelist( [ 0=>'Mr', 1=>'Mme', 2=>'Mll'])->set(1);
+		$f->addField('dropdown', 'gender')->setCaption('Genre')->setValuelist([0 => 'Mr', 1 => 'Mme', 2 => 'Mll'])->set(1);
 
 		$b = $this->add('Button')->setLabel('Info');
 		$b->js('click', $this->js()->univ()->atkWpMessage($this->name, 'success', 'Use this post "Publish\Update" button to save this extra information'));
