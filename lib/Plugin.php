@@ -32,6 +32,13 @@ class Plugin extends \WpAtk implements \Pluggable
 		// TODO: Implement uninstallPlugin() method.
 	}
 
+	public function wpInit()
+	{
+		parent::wpInit();
+		//add shortcake ui for easily add our plugin.
+		$this->add('atk4wp\Controller\Shortcake');
+	}
+
 	public function setDbTables()
 	{
 		global $wpdb;

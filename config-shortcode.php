@@ -35,9 +35,26 @@ $config['shortcode']['atk4wp-clickme'] =    ['name' => 'atk4wp-clickme',
                                             'uses' => 'atk4wp\Shortcode\ClickMe',
                                             'atkjs'=> true,
                                             'js'   => ['atkwp-js', 'vendor/test'],
-                                            'css'   => ['at4wp-style']
+                                            'css'   => ['at4wp-style'],
+                                             'shortcake' => [
+	                                             'label'         => 'Atk4Wp Click Me',
+	                                             'listItemImage' => 'dashicons-admin-links',
+	                                             'attrs'         => [
+		                                             [
+			                                             'label'    => 'Maximum number of click',
+			                                             'attr'   => 'max_count',
+			                                             'type'   => 'number',
+			                                             'multiple' => true,
+		                                             ]
+	                                             ]
+                                             ]
 											];
 
 $config['shortcode']['atk4wp-form'] =   ['name' => 'atk4wp-form',
-                                        'uses' => 'atk4wp\Shortcode\Form'
+                                        'uses' => 'atk4wp\Shortcode\Form',
+                                        'atkjs'=> true,
+										'shortcake' => [
+														'label'         => 'Atk4Wp Form',
+														'listItemImage' => 'dashicons-admin-links',
+														]
 										];
