@@ -21,6 +21,8 @@
  *  'js'              => (array)(Optional)  An array of javascript file path (without the extension) to load with this shortcode.
  *											File path value is relative to your plugin public/js directory.
  *                                          Ex: test.js file is located under public/js/vendor/test.js then the path value should be 'vendor/test'
+ *  'js-inc'          => (array)(Optional)  An array of already registered WordPress javascript files to load with the shortcode.
+ *
  *  'css'             => (array)(Optional)  An array of css file path (without the extension) to load with this shortcode.
  *											File path value is relative to your plugin public/css directory.
  *                                          Ex: test.css file is located under public/css/test.css then the path value should be 'test'
@@ -35,6 +37,7 @@ $config['shortcode']['atk4wp-clickme'] =    ['name' => 'atk4wp-clickme',
                                             'uses' => 'atk4wp\Shortcode\ClickMe',
                                             'atkjs'=> true,
                                             'js'   => ['atkwp-js', 'vendor/test'],
+											'js-inc' => ['iris'],
                                             'css'   => ['at4wp-style'],
                                              'shortcake' => [
 	                                             'label'         => 'Atk4Wp Click Me',
