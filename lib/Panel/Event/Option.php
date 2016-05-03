@@ -33,15 +33,23 @@ class Option extends \Wp_WpPanel
 
 		//Event default tab
 		$v = $eventDefault->add('View')->addClass('atk-box');
-		$f = $v->add('Form_WpStacked');
+		$f = $v->add('Form_WpStacked', 'o-form');
 		$default = $f->addField('dropdown', 'event_default')->setValueList(['weekly' => _('Weekly'), 'monthly' => _('Monthly'), 'annually' => _('Annually')]);
+
+		$color = $f->addField('line', 'color')->set('#ffffff');
+
+		$color->js(true)->iris(['hide' => false, 'palettes' => true]);
+
 		if (isset($options)) {
 			$default->set($options['event-default']);
+			$color->set($options['event-color']);
 		}
+
 		$f->addSubmit(_('Save Option'));
 
 		if( $f->isSubmitted()){
 			$options['event-default'] = $f->get('event_default');
+			$options['event-color']   = $f->get('color');
 			$optionModel->saveOptionValue('atk4wp-event-options', $options);
 		}
 

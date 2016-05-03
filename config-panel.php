@@ -26,8 +26,10 @@
  *                                          Ex: icon.png file is located under public/images/icon.png then the path value should be 'images/icon.png'
  *  'position'        => (integer)(Optional) An integer holding the menu postion in dashboard.
  *											ONLY applicable for 'panel' type.
- *  'js'              => (array)(Optional)  An array of javascript file path (without the extension) to load with this panel.
+ *  'js'              => (array)(Optional)  An array of javascript file path (without the extension) to load with the panel.
  *											File path value is relative to your plugin public/js directory.
+ *  'js-inc'          => (array)(Optional)  An array of already registered WordPress javascript files to load with the panel.
+ *
  *                                          Ex: test.js file is located under public/js/vendor/test.js then the path value should be 'vendor/test'
  *  'css'             => (array)(Optional)  An array of css file path (without the extension) to load with this panel.
  *											File path value is relative to your plugin public/css directory.
@@ -44,8 +46,8 @@ $config['panel']['event'] =  [  'type'  => 'panel',
                                 'uses'  => __NAMESPACE__ . '\\Panel\\Event',
                                 'capabilities' => 'manage_options',
                                 /*'icon'  =>  'images/sc-icon.png',*/
-                                'js'   => [],
-                                'css'   => []
+                                'js'     => [],
+                                'css'    => []
 ];
 
 $config['panel']['option'] =  [  'type'  => 'sub-panel',
@@ -57,5 +59,6 @@ $config['panel']['option'] =  [  'type'  => 'sub-panel',
                                'capabilities' => 'manage_options',
 								/*'icon'  =>  'images/sc-icon.png',*/
 	                           'js'   => [],
+	                           'js-inc' =>['iris'],
 	                           'css'   => []
 ];
