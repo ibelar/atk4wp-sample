@@ -37,7 +37,6 @@ $config['shortcode']['atk4wp-clickme'] =    ['name' => 'atk4wp-clickme',
                                             'uses' => 'atk4wp\Shortcode\ClickMe',
                                             'atkjs'=> true,
                                             'js'   => ['atkwp-js', 'vendor/test'],
-											'js-inc' => ['iris'],
                                             'css'   => ['at4wp-style'],
                                              'shortcake' => [
 	                                             'label'         => 'Atk4Wp Click Me',
