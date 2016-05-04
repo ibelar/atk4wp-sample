@@ -18,28 +18,35 @@ namespace atk4wp\Panel\Event;
 
 class Option extends \Wp_WpPanel
 {
+
 	public function init()
 	{
 		parent::init();
 
-		$optionModel = $this->add('Model_WpOptions');
-		$options = get_option('atk4wp-event-options', null);
-
 		$this->add('H4')->set('Event Option');
 
 		$tabs = $this->add('Tabs');
-		$eventDefault   = $tabs->addTab(_('Default category'));
-		$upload         = $tabs->addTab(_('Image upload'));
+		//Event option tabsetup
+		$this->setupEventOptions($tabs);
+		//Upload tab setup
+		$this->setupUpload($tabs);
+	}
 
-		//Event default tab
-		$v = $eventDefault->add('View')->addClass('atk-box');
-		$f = $v->add('Form_WpStacked', 'o-form');
+	public function setupEventOptions($tabs)
+	{
+		$optionModel = $this->add('Model_WpOptions');
+		$options = get_option('atk4wp-event-options', null);
+
+		$eventOptions = $tabs->addTab(_('Event Options'))->addClass('atk-padding-small');
+
+		$f = $eventOptions->add('Form_WpStacked', 'o-form');
+
 		$default = $f->addField('dropdown', 'event_default')->setValueList(['weekly' => _('Weekly'), 'monthly' => _('Monthly'), 'annually' => _('Annually')]);
 
-		$color = $f->addField('line', 'color')->set('#ffffff');
+		//add WP colorpicker field.
+		$color = $f->addField('WpColorPicker', 'color')->set('#ffffff');
 
-		$color->js(true)->iris(['hide' => false, 'palettes' => true]);
-
+		//set form field with their saved value.
 		if (isset($options)) {
 			$default->set($options['event-default']);
 			$color->set($options['event-color']);
@@ -47,12 +54,17 @@ class Option extends \Wp_WpPanel
 
 		$f->addSubmit(_('Save Option'));
 
-		if( $f->isSubmitted()){
+		if ($f->isSubmitted()) {
 			$options['event-default'] = $f->get('event_default');
 			$options['event-color']   = $f->get('color');
 			$optionModel->saveOptionValue('atk4wp-event-options', $options);
+			$this->js()->univ()->successMessage(_('Options are saved!'))->execute();
 		}
+	}
 
+	public function setupUpload($tabs)
+	{
+		$upload = $tabs->addTab(_('Image upload'));
 		//Image upload tab
 		$fu = $upload->add('Form_WpStacked')->addClass('atk-padding-small');
 		$uploadField = $fu->addField('Form_Field_WpUpload', 'file')->setCaption('');
@@ -61,8 +73,6 @@ class Option extends \Wp_WpPanel
 		$uploadField->setInputMessage( _('Upload image file to Media'));
 
 		$fu->onSubmit([$this, 'fileSubmit']);
-
-
 	}
 
 	public function fileSubmit($f)
