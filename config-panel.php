@@ -59,6 +59,7 @@ $config['panel']['option'] =  [  'type'  => 'sub-panel',
                                'capabilities' => 'manage_options',
 								/*'icon'  =>  'images/sc-icon.png',*/
 	                           'js'   => [],
-	                           'js-inc' =>['iris'],
+	                           'js-inc' =>['wp-color-picker'],
+								'css-inc' => ['wp-color-picker'],
 	                           'css'   => []
 ];
