@@ -35,7 +35,7 @@ class Option extends \Wp_WpPanel
 	public function setupEventOptions($tabs)
 	{
 		$optionModel = $this->add('Model_WpOptions');
-		$options = get_option('atk4wp-event-options', null);
+		$options = $optionModel->getOptionValue('atk4wp-event-options', null);
 
 		$eventOptions = $tabs->addTab(_('Event Options'))->addClass('atk-padding-small');
 
